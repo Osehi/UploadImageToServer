@@ -64,6 +64,8 @@ class NetworkModule {
     /**
      * create an instance of the APIUploadImage
      */
+    @Provides
+    @Singleton
     fun provideAPIUploadImageService(imageUploadRetrofit: Retrofit):APIUploadImage{
         return imageUploadRetrofit.create(APIUploadImage::class.java)
     }

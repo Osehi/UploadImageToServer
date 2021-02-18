@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">UploadImageToDarotServer</string>
+    <string name="upload_button_texr_str">Upload</string>
 </resources>

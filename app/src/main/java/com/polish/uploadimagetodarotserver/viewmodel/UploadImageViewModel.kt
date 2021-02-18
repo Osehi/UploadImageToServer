@@ -37,7 +37,7 @@ class UploadImageViewModel@Inject constructor(private val repository:IRepository
             // to channel the data the the mainThread
             withContext(Dispatchers.Main){
                 _getImageUploadResponse.value = output
-                Log.d(TAG, "the output:${output.message}")
+                Log.d(TAG, "the output:${output.copy()}")
             }
         }
     }
