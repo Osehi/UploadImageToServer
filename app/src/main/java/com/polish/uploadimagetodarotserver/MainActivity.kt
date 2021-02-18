@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity() {
          * post the image to server
          */
         uploadButton.setOnClickListener {
-            val imageBody = imageInFileFormat.asRequestBody("image/jpg".toMediaTypeOrNull())
+            val imageBody = imageInFileFormat.asRequestBody("image/jpg".toMediaTypeOrNull())// this upload was successful when I changed the upload-type from "image/jpeg" to "image/jpg"
             val imageFile = MultipartBody.Part.createFormData("file",imageInFileFormat.name, imageBody)
             uploadImageViewModel.postMyImage(imageFile)
             Log.d(TAG, "at uploadButton:$imageInFileFormat")
