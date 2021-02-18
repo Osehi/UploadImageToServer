@@ -33,7 +33,7 @@ fun convertBitmapToFile(bitmapData:Bitmap, context: Context): File?{
     var file: File? = null
     val timeStamp:String = java.text.SimpleDateFormat("yyyyMMdd_HHmmss", Locale.ENGLISH).format(Date())   //SimpleDateFormat("yyyyMMdd_HHmmss", Locale.ENGLISH).format(Date())
     val child = "JPEG_${timeStamp}_.jpg"
-
+        
     if (extStorageDirectory != null){
         file = File(extStorageDirectory, child)
         if (file.exists()){

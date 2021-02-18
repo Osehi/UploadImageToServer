@@ -15,8 +15,10 @@ import com.polish.uploadimagetodarotserver.helper.convertBitmapToFile
 import com.polish.uploadimagetodarotserver.helper.convertUriToBitmap
 import com.polish.uploadimagetodarotserver.viewmodel.UploadImageViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import okhttp3.MediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import java.io.File
 
@@ -68,9 +70,10 @@ class MainActivity : AppCompatActivity() {
          * post the image to server
          */
         uploadButton.setOnClickListener {
-            val imageBody = imageInFileFormat.asRequestBody("image/*".toMediaTypeOrNull())
+            val imageBody = imageInFileFormat.asRequestBody("image/jpg".toMediaTypeOrNull())
             val imageFile = MultipartBody.Part.createFormData("file",imageInFileFormat.name, imageBody)
             uploadImageViewModel.postMyImage(imageFile)
+            Log.d(TAG, "at uploadButton:$imageInFileFormat")
         }
 
         /**
@@ -104,6 +107,10 @@ class MainActivity : AppCompatActivity() {
                     // convert bitmap to file
                     imageInFileFormat = convertBitmapToFile(theBitmapValue!!, this)!!
                     Log.d(TAG, "here is the file format:$imageInFileFormat")
+//                    val file = File(selectedImageUri?.path!!)
+//                    imageInFileFormat = file
+//                    Log.d(TAG, "content of file:$file")
+//                    val requestFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
                 }
             }
         }
